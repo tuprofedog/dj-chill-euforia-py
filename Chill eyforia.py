@@ -2,9 +2,9 @@
 import turtle
 from config import *
 from time import sleep
+from random import randint, choice, random
 
 myPen = turtle.Turtle()
-boxSize = 25
 
 # This function draws a box by drawing each side of the square and using the fill function
 def box(intDim):
@@ -23,7 +23,7 @@ def box(intDim):
     myPen.end_fill()
     myPen.setheading(0)
 
-def drawPixelArt(pixelArt, colors):
+def drawPixelArt(pixelArt, colors, boxSize):
     # Draw the pixel art
     for i in range (0,len(pixelArt)):
         for j in range (0,len(pixelArt[i])):
@@ -58,12 +58,29 @@ def rightRotate(lists, num):
 
     return output_list
 
+def drawBg():
+    screen_width = turtle.window_width()
+    screen_height = turtle.window_height()
+
+    for x in range(-int(screen_width/2), int(screen_width/2), 40):
+        for y in range(-int(screen_height/2), int(screen_height/2), 40):
+            myPen.penup()
+            myPen.goto(x, y)
+            myPen.pendown()
+            myPen.color(choice(COLORS_2), choice(COLORS_2))
+            if random() < 0.5:  # 50% chance to fill
+                myPen.begin_fill()
+            myPen.circle(randint(5,15), steps=randint(3,10))
+            if myPen.filling():  # only end if it was filling
+                myPen.end_fill()
+
 for i in range(1, len(COLORS_1) + 1):
     for j in range(0, len(COLORS_1)):
         turtle.clearscreen()
 
         # Initial config
         myPen._tracer(0)
+        drawBg()
 
         # Position myPen in top left area of the screen
         myPen.penup()
@@ -74,6 +91,6 @@ for i in range(1, len(COLORS_1) + 1):
         myPen.setheading(0)
 
         # Draw the pixel art and rotate colors
-        drawPixelArt(FACE_1, COLORS_1)
+        drawPixelArt(FACE_1, COLORS_1, randint(15,25))
         COLORS_1 = rightRotate(COLORS_1, i)
-        sleep(1)
+        sleep(0.5)

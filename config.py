@@ -19,3 +19,18 @@ FACE_1 = [
 ]
 
 COLORS_1 = ["peachpuff", "sienna", "black", "orange", "skyblue"]
+
+COLORS_2 = [
+    "#FF0000",  # red
+    "#00FF00",  # lime
+    "#0000FF",  # blue
+    "#FFFF00",  # yellow
+    "#FF00FF",  # magenta
+    "#00FFFF",  # cyan
+    "#FF8800",  # orange
+    "#8800FF",  # violet
+    "#00FFAA",  # aqua green
+    "#FF0066",  # hot pink
+    "#0088FF",  # sky blue
+    "#AAFF00",  # chartreuse
+]
