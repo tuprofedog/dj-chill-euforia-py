@@ -70,7 +70,7 @@ def drawBg():
             myPen.color(choice(COLORS_2), choice(COLORS_2))
             if random() < 0.5:  # 50% chance to fill
                 myPen.begin_fill()
-            myPen.circle(randint(1,10), steps=randint(3,10))
+            myPen.circle(randint(5,20), steps=randint(3,10))
             if myPen.filling():  # only end if it was filling
                 myPen.end_fill()
 
@@ -80,20 +80,22 @@ for i in range(1, len(COLORS_1) + 1):
 
         # Initial config
         myPen._tracer(0)
+        myPen.speed(0)
         num = randint(15,25)
 
-        for i in range(5):
-            drawBg()
+        drawBg()
 
-            # Position myPen in top left area of the screen
-            myPen.penup()
-            myPen.goto(0, 0)
-            myPen.forward(-400) # Horizontal position adjusted
-            myPen.setheading(90)
-            myPen.forward(250) # Vertical position adjusted
-            myPen.setheading(0)
+        # Position myPen in top left area of the screen
+        myPen.penup()
+        myPen.goto(0, 0)
+        myPen.forward(-400) # Horizontal position adjusted
+        myPen.setheading(90)
+        myPen.forward(250) # Vertical position adjusted
+        myPen.setheading(0)
 
-            # Draw the pixel art and rotate colors
-            drawPixelArt(FACE_1, COLORS_1, num)
+        # Draw the pixel art and rotate colors
+        drawPixelArt(FACE_1, COLORS_1, num)
 
         COLORS_1 = rightRotate(COLORS_1, i)
+
+        sleep(0.25)
